@@ -8,63 +8,93 @@ import {
   Stack,
   Avatar,
   Box,
+  IconButton,
+  Divider,
+  CardActions,
+  CardActionArea,
 } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { green, pink, deepOrange, deepPurple } from "@mui/material/colors";
+import { AutoAwesome, BookmarkAdd, History } from "@mui/icons-material";
+import { justNow } from "../util/datetime";
 
-export default function JobCard() {
+export default function JobCard({data}) {
   return (
     <div>
-      <Card sx={{ maxWidth: 345, borderRadius: 2 }}>
+      <Card sx={{ borderRadius: '8px', boxShadow: 'none' }}>
         <CardContent>
           <Stack
             direction="row"
             justifyContent="space-between"
             alignItems="center"
           >
-            <Avatar sx={{ bgcolor: green[500] }}>G</Avatar>
-            <Button
-              size="small"
-              sx={{ minWidth: "auto", padding: "2px", color: deepPurple[500] }}
+            <Stack direction={"row"}
+              alignItems="center"
+              justifyContent={"center"}
+              spacing={1}
             >
-              +
-            </Button>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '50px', width: '50px',
+                  backgroundColor: 'primary.background',
+                  borderRadius: '8px'
+                }}>
+                {/* company logo  */}
+                <img width={"90%"} height={'90%'}
+                  src={`${data.companyLogo}`} style={{objectFit:'contain'}} />
+              </Box>
+              <Stack direction={"column"}>
+                <Typography gutterBottom variant="subtitle1" fontWeight={500} lineHeight={'14px'}>
+                  {data.title}
+                </Typography>
+                <Stack direction={'row'} spacing={1}>
+                  <Typography variant="caption" color="text.secondary" children={data.company} />
+                  <AutoAwesome sx={{ fontSize: '16px', color: '#0b0' }} />
+                  <Typography variant="caption" color="text.secondary" children='12 Applicants' />
+                </Stack>
+              </Stack>
+            </Stack>
+            <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'start' }}>
+              <IconButton>
+                <BookmarkAdd sx={{ fontSize: '20px', color: data.favourite && '#090' }} />
+              </IconButton>
+            </Box>
           </Stack>
-          <Typography gutterBottom variant="h6" component="div">
-            Sr. Product Designer
-          </Typography>
-          <Typography variant="body2" color="text.secondary" mb={2}>
-            Google • 12 Applicants
-          </Typography>
           <Stack direction="row" spacing={1} mb={2}>
-            <Chip label="Full-Time" color="primary" size="small" />
-            <Chip label="Remote" color="secondary" size="small" />
-            <Chip
-              label="Expert"
-              sx={{ bgcolor: pink[200], color: "white" }}
-              size="small"
-            />
+            <Chip label="Full-Time" size="small"
+              sx={{ borderRadius: '6px', color: '#339bff', backgroundColor: '#daedfe' }} />
+            <Chip label="Remote" size="small"
+              sx={{ borderRadius: '6px', color: '#9f4cfe', backgroundColor: '#f1e2ff' }} />
+            <Chip label="Expert" size="small"
+              sx={{ borderRadius: '6px', color: '#ffa543', backgroundColor: '#fff0d9' }} />
           </Stack>
-          <Typography variant="body2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+          <Typography variant="body2" sx={{ fontSize: '12px' }}>
+            {data.jobDescribe}
           </Typography>
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{ fontWeight: "bold", color: deepOrange[800], mt: 2 }}
-          >
-            $102k/m
-          </Typography>
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <AccessTimeIcon fontSize="small" />
+        </CardContent>
+        <Divider sx={{ mt: 1 ,mx:2}} />
+        <Stack direction={"row"} sx={{p:2,justifyContent:'space-between'}}>
+          <Stack direction={"row"} sx={{ alignItems: 'center' }}>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: '22px', fontWeight: 500 }}
+            >
+              ${data.salary}k
+            </Typography>
+            <Typography variant="body2" color={"#999"} children="/m" />
+          </Stack>
+          <Stack direction="row" alignItems="center" >
+            <History fontSize="small" sx={{color:'#999'}} />
             <Typography variant="body2" color="text.secondary">
-              Posted 12 days ago
+              Posted {justNow(data.dateTime)}
             </Typography>
           </Stack>
-        </CardContent>
+        </Stack>
       </Card>
-    </div>
+    </div >
   );
 }

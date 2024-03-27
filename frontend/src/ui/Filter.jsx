@@ -1,64 +1,115 @@
 import React, { useState } from 'react';
-import { Box, Typography, Checkbox, Button, FormGroup, FormControlLabel, Slider } from '@mui/material';
+import { Box, Typography, Checkbox, Button, FormGroup, FormControlLabel, Slider, Divider, Grid, IconButton } from '@mui/material';
+import StyledSlider from './StyledSlider';
+import StyledCheckBox from './styledCheckBox';
+import { Close } from '@mui/icons-material';
 
-export default function Filter() {
+export default function Filter({ onClose }) {
 
-    const [salaryRange, setSalaryRange] = useState([50000, 120000]);
+  const [salaryRange, setSalaryRange] = useState([0, 200]);
 
-    const handleSalaryChange = (event, newValue) => {
-      setSalaryRange(newValue);
-    };
-  
+  const handleSalaryChange = (event, newValue) => {
+    setSalaryRange(newValue);
+  };
+
 
 
   return (
-    <Box sx={{ p: 2, bgcolor: 'white', borderRadius: 2 }}>
-    <Typography variant="h6" gutterBottom>
-      Filter
-      <Button size="small" sx={{ float: 'right' }}>Reset</Button>
-    </Typography>
-    
-    <Typography gutterBottom>Sort By</Typography>
-    <FormGroup>
-      <FormControlLabel control={<Checkbox />} label="Recently" />
-      <FormControlLabel control={<Checkbox />} label="A-Z" />
-      <FormControlLabel control={<Checkbox />} label="Top Salary" />
-      <FormControlLabel control={<Checkbox />} label="Rating" />
-    </FormGroup>
-    
-    <Typography gutterBottom>Salary Range</Typography>
-    <Slider
-      value={salaryRange}
-      onChange={handleSalaryChange}
-      valueLabelDisplay="auto"
-      getAriaValueText={(value) => `$${value}k/m`}
-      min={50000}
-      max={120000}
-    />
-    
-    <Typography gutterBottom>Job Type</Typography>
-    <FormGroup>
-      <FormControlLabel control={<Checkbox />} label="Full-Time" />
-      <FormControlLabel control={<Checkbox />} label="Part-Time" />
-      <FormControlLabel control={<Checkbox />} label="Contractual" />
-      <FormControlLabel control={<Checkbox />} label="Freelance" />
-      <FormControlLabel control={<Checkbox />} label="Internship" />
-    </FormGroup>
-    
-    <Typography gutterBottom>Work Location</Typography>
-    <FormGroup>
-      <FormControlLabel control={<Checkbox />} label="On-Site" />
-      <FormControlLabel control={<Checkbox />} label="Remote" />
-      <FormControlLabel control={<Checkbox />} label="Hybrid" />
-    </FormGroup>
-    
-    <Typography gutterBottom>Experience Level</Typography>
-    <FormGroup>
-      <FormControlLabel control={<Checkbox />} label="Fresher" />
-      <FormControlLabel control={<Checkbox />} label="Beginner" />
-      <FormControlLabel control={<Checkbox />} label="Intermediate" />
-      <FormControlLabel control={<Checkbox />} label="Expert" />
-    </FormGroup>
-  </Box>
+    <Box sx={{ p: { xs: 2, md: 4 }, bgcolor: 'white', borderRadius: '8px' }}>
+      <Typography variant="h6" gutterBottom fontWeight={600} color={'primary.darkest'}>
+        {onClose &&
+          <IconButton onClick={onClose}>
+            <Close />
+          </IconButton>
+        }
+        Filter
+        <Button size="small" sx={{ float: 'right', textTransform: 'none', fontSize: '16px', fontWeight: 200 }}>Reset</Button>
+      </Typography>
+      <Divider />
+      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Sort By</Typography>
+      <FormGroup>
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Recently" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="A-Z" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Top Salary" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Rating" />} />
+          </Grid>
+        </Grid>
+      </FormGroup>
+
+      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Salary Range</Typography>
+      <Box px={3}>
+        <StyledSlider
+          value={salaryRange}
+          onChange={handleSalaryChange}
+          valueLabelDisplay="on"
+          min={0}
+          max={200}
+          valueLabelFormat={(value) => `$${value}k/m`}
+        />
+      </Box>
+
+
+      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Job Type</Typography>
+      <FormGroup>
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Full-Time" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Part-Time" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Contractual" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Freelance" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Internship" />} />
+          </Grid>
+        </Grid>
+      </FormGroup>
+
+      <Typography gutterBottom>Work Location</Typography>
+      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Work Location</Typography>
+      <FormGroup>
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="On-Site" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Remote" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Hybrid" />} />
+          </Grid>
+        </Grid>
+      </FormGroup>
+      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Experience Level</Typography>
+      <FormGroup>
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Fresher" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Beginner" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Intermediate" />} />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Expert" />} />
+          </Grid>
+        </Grid>
+      </FormGroup>
+    </Box>
   )
 }

@@ -2,28 +2,29 @@ import React from "react";
 import JobCard from "../ui/JobCard";
 import Filter from "../ui/Filter";
 import SearchCard from "../ui/SearchCard";
-import { Grid, Container, Paper } from "@mui/material";
+import { Grid, Container, Paper, Box } from "@mui/material";
+import Jobs from "../components/jobs";
 
 export default function Home() {
   return (
-    <Container sx={{padding:2}}>
+    <Box sx={{ px: { xs: 2, md: 6 }, p: 2 }}>
       <Grid container spacing={2}>
-      
-        <Grid item xs={12} md={4}>
-        <Paper elevation={3}>   <Filter /></Paper>
+        <Grid item xs={3} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Paper elevation={0}>
+            <Filter />
+          </Paper>
         </Grid>
-        <Grid item xs={12} md={8} container spacing={2}>
-        <Grid item xs={12}>
-        <Paper elevation={3}><SearchCard /></Paper>
-        </Grid>
-          {/* Assuming you want to render multiple JobCards, you might map through an array */}
-          {[...Array(10)].map((_, index) => (
-            <Grid item xs={12} sm={6} lg={4} key={index}>
-            <Paper elevation={3}><JobCard /></Paper>   
+        <Grid item xs={12} md={9}>
+          <Grid container >
+            <Grid item xs={12} >
+              <SearchCard />
             </Grid>
-          ))}
+            <Grid item xs={12} md={12}>
+              <Jobs />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 }

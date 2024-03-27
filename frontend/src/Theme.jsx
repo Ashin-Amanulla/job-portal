@@ -1,19 +1,25 @@
 import React from 'react'
 import { createTheme } from '@mui/material';
-import { green, purple } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 
 
 const theme = createTheme({
     palette: {
       background: {
-        default: '#f5f5f5' // Your desired background color
+        default: '#fff' // Your desired background color
       },
       primary: {
-        main: purple[500], // Example primary color
+        main: '#119856', // Example primary color
+        dark:'#0c4026',
+        darkest: '#044022',
+        background: '#f8f9fa'
       },
       secondary: {
         main: green[500], // Example secondary color
       },
+      white:{
+        main:'#fff'
+      }
     },
     typography: {
       fontFamily: [
