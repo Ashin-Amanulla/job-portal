@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import theme from "./Theme";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import ConnectUs from "./pages/ConnectUs";
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/find-jobs" element={<FindJobs />}></Route>
           <Route path="/create-jobs" element={<CreateJobs />}></Route>
           <Route path="/about-us" element={<AboutUs />}></Route>
+          <Route path="/connect-us" element={<ConnectUs />}></Route>
         </Routes>
       </Box>
     </ThemeProvider>
