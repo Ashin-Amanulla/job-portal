@@ -78,7 +78,6 @@ export default function Filter({ onClose }) {
         </Grid>
       </FormGroup>
 
-      <Typography gutterBottom>Work Location</Typography>
       <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Work Location</Typography>
       <FormGroup>
         <Grid container>

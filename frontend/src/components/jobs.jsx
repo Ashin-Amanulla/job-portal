@@ -27,7 +27,7 @@ export default function Jobs({ data, filterChange }) {
 
                 </Stack>
             </Stack>
-            <Grid container spacing={3} mt={1} sx={{ px: 1, overflow: 'scroll' }} maxHeight={{ xs: 300, md: 600 }}>
+            <Grid container spacing={3} mt={1} sx={{ px: 1, overflow: 'scroll' }} maxHeight={{ xs: '55vh', md: '60vh' }}>
                 {jobs.map((data, index) => (
                     <Grid item xs={12} sm={6} lg={4} key={index}>
                         <Paper elevation={0}><JobCard data={data} /></Paper>

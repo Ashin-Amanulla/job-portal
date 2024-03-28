@@ -7,21 +7,15 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import theme from "./Theme";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import AdminLayout from "./layout/adminLayout";
+import RouteRenderer from "./core/routes/routeRender";
 
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar />
-      <Box sx={{backgroundColor:'primary.background'}}>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/find-jobs" element={<FindJobs />}></Route>
-          <Route path="/create-jobs" element={<CreateJobs />}></Route>
-          <Route path="/about-us" element={<AboutUs />}></Route>
-        </Routes>
-      </Box>
+      <RouteRenderer />
     </ThemeProvider>
   );
 }
