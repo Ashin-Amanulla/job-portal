@@ -8,7 +8,7 @@ import Jobs from "../components/jobs";
 export default function FindJobs() {
   const [filterOpen, setfilterOpen] = useState(false)
   return (
-    <Box sx={{ px: { xs: 2, md: 6 }, p: 2 }}>
+    <Box sx={{ px: { xs: 2, md: 6 }, p: 5 }}>
       <Drawer open={filterOpen} anchor="right" onClose={() => setfilterOpen(false)}>
         <Paper elevation={0}>
           <Filter onClose={()=>setfilterOpen(false)}/>

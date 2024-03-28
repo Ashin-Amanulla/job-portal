@@ -1,13 +1,6 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./layout/Navbar";
-import FindJobs from "./pages/FindJobs";
-import CreateJobs from "./pages/CreateJobs";
-import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
 import theme from "./Theme";
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
-import AdminLayout from "./layout/adminLayout";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import RouteRenderer from "./core/routes/routeRender";
 
 

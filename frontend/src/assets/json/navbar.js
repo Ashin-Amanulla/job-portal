@@ -7,10 +7,10 @@ export const navActions = [
         title:'Find Jobs',
         href:'jobs/find-jobs',
     },
-    {
-        title:'Hire Talent',
-        href:'jobs/hire',
-    },
+    // {
+    //     title:'Hire Talent',
+    //     href:'hire',
+    // },
     {
         title:'Create Job',
         href:'jobs/create-jobs',
