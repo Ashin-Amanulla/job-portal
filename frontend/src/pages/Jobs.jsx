@@ -2,6 +2,7 @@ import { Box, Button, Paper, Stack, Table, TableBody, TableCell, TableContainer,
 import React, { useState } from 'react'
 import { jobs } from '../assets/json/jobs'
 import AddJob from '../components/admin/jobs/addJob'
+import StyledTableActionCell from '../ui/tableAction'
 
 export default function Jobs() {
     const [open,setOpen] = useState(false)
@@ -20,6 +21,7 @@ export default function Jobs() {
                             <TableCell align="right">Company</TableCell>
                             <TableCell align="right">Description</TableCell>
                             <TableCell align="right">Salary</TableCell>
+                            <TableCell align="right">Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -32,8 +34,9 @@ export default function Jobs() {
                                     {row.title}
                                 </TableCell>
                                 <TableCell align="right">{row.company}</TableCell>
+                                <TableCell align="right">{row.jobDescribe}</TableCell>
                                 <TableCell align="right">{row.salary}k/m</TableCell>
-                                <TableCell align="right">{row.salary}k/m</TableCell>
+                                <TableCell><StyledTableActionCell actions={["Edit","Delete"]} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
