@@ -26,11 +26,12 @@ const AdminSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  role: {
-    type: String,
-    required: true
+  super_admin: {
+    type: Boolean,
+    required: true,
+    enum:[true,false],
+    default:false
   },
- 
 },{
     timestamps: true,
 });

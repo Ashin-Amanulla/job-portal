@@ -22,9 +22,19 @@ const JobSchema = new mongoose.Schema({
   },
   link: {
     type: String,
+    required:true,
     trim: true
   },
+  salary: {
+    type: String,
+    required: true
+  },
   industry: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  industry_logo:{
     type: String,
     required: true,
     trim: true
@@ -40,7 +50,7 @@ const JobSchema = new mongoose.Schema({
     trim: true
   },
   keywords: {
-    type: [String], 
+    type: [String],
     default: []
   }
 },{

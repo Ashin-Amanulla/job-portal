@@ -1,5 +1,4 @@
-import { SpaceDashboard } from "@mui/icons-material";
-import Work from "@mui/icons-material/Work";
+import { Person, SpaceDashboard, Work } from "@mui/icons-material";
 
 export const adminNavActions = [
     {
@@ -11,5 +10,11 @@ export const adminNavActions = [
         title:'Jobs',
         href:'admin/jobs',
         icon: <Work/>
+    },
+    ,
+    {
+        title:'Users',
+        href:'admin/users',
+        icon: <Person/>
     }
 ]

@@ -99,7 +99,58 @@ export default function AddJob({ open, onClose }) {
                             </span>
                         )}
                     </Stack>
+                    <Stack>
+                        <Typography variant='subtitle2'>Location</Typography>
+                        <Stack direction={'row'} spacing={0.5}>
+                            <Stack>
+                                <Controller
+                                    name="city"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <StyledTextfield placeholder='Enter City' {...field} sx={{ flexGrow: 1 }} />
+                                    )}
+                                    rules={{ required: 'Enter the City' }}
+                                />
+                                {errors.city && (
+                                    <span style={errorMsgStyle}>
+                                        {errors.city.message}
+                                    </span>
+                                )}
+                            </Stack>
 
+                            <Stack>
+                                <Controller
+                                    name="state"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <StyledTextfield placeholder='Enter State' {...field} sx={{ flexGrow: 1 }} />
+                                    )}
+                                    rules={{ required: 'Enter the state' }}
+                                />
+                                {errors.state && (
+                                    <span style={errorMsgStyle}>
+                                        {errors.state.message}
+                                    </span>
+                                )}
+                            </Stack>
+
+                            <Stack>
+                                <Controller
+                                    name="country"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <StyledTextfield placeholder='Enter Country' {...field} sx={{ flexGrow: 1 }} />
+                                    )}
+                                    rules={{ required: 'Enter the Country' }}
+                                />
+                                {errors.country && (
+                                    <span style={errorMsgStyle}>
+                                        {errors.country.message}
+                                    </span>
+                                )}
+                            </Stack>
+                        </Stack>
+                    </Stack>
                     <Stack>
                         <Typography variant='subtitle2'>Job Description(max 250 char)</Typography>
                         <Controller
@@ -112,7 +163,7 @@ export default function AddJob({ open, onClose }) {
                                         padding: '10px',
                                         outlineColor: '#119856',
                                         borderRadius: '4px'
-                                        
+
                                     }}
                                         placeholder='Enter Job Description' {...field} />
                                     {errors.description && (

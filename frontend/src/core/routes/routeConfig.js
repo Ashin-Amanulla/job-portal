@@ -8,6 +8,7 @@ import AdminLayout from "../../layout/adminLayout"
 import Error404 from "../../pages/404"
 import { Navigate } from "react-router-dom"
 import Jobs from "../../pages/Jobs"
+import Users from "../../pages/users"
 
 export const RoutesConfig = () => {
 
@@ -58,6 +59,10 @@ export const RoutesConfig = () => {
                 {
                     path: 'jobs',
                     element: <Jobs/>,
+                },
+                {
+                    path: 'users',
+                    element: <Users/>,
                 },
                 {
                     path: '*',
