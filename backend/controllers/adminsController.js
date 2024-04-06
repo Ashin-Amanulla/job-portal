@@ -27,7 +27,7 @@ exports.createAdmin = async (req, res) => {
         await admin.save();
         // const token = await signAccessToken(admin._id, admin.role, admin.email);
         delete admin["password_hash"]
-        res.status(201).send({status : true ,data: admin /*token */});
+        res.status(201).send({status : true ,data: admin /*,token */});
     } catch (error) {
         console.log("got error", error);
         res.status(400).send(error);

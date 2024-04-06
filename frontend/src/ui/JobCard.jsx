@@ -19,7 +19,7 @@ import { green, pink, deepOrange, deepPurple } from "@mui/material/colors";
 import { AutoAwesome, BookmarkAdd, History } from "@mui/icons-material";
 import { justNow } from "../util/datetime";
 
-export default function JobCard({data}) {
+export default function JobCard({ data }) {
   return (
     <div>
       <Card sx={{ borderRadius: '8px', boxShadow: 'none' }}>
@@ -45,7 +45,7 @@ export default function JobCard({data}) {
                 }}>
                 {/* company logo  */}
                 <img width={"90%"} height={'90%'}
-                  src={`${data.companyLogo}`} style={{objectFit:'contain'}} />
+                  src={`${data.companyLogo}`} style={{ objectFit: 'contain' }} />
               </Box>
               <Stack direction={"column"}>
                 <Typography gutterBottom variant="subtitle1" fontWeight={500} lineHeight={'14px'}>
@@ -75,24 +75,39 @@ export default function JobCard({data}) {
           <Typography variant="body2" sx={{ fontSize: '12px' }}>
             {data.jobDescribe}
           </Typography>
+          <Stack mt={0.3} direction={"row"} justifyContent={"space-between"}>
+            <Typography variant="subtitle2" sx={{ color: 'grey' }}>Requirements</Typography>
+            <Typography variant="subtitle2">{data.Requirements}</Typography>
+          </Stack>
+          <Stack mt={0.3} direction={"row"} justifyContent={"space-between"}>
+            <Typography variant="subtitle2" sx={{ color: 'grey' }}>Experience</Typography>
+            <Typography variant="subtitle2">{data.Experience}</Typography>
+          </Stack>
         </CardContent>
-        <Divider sx={{ mt: 1 ,mx:2}} />
-        <Stack direction={"row"} sx={{p:2,justifyContent:'space-between'}}>
-          <Stack direction={"row"} sx={{ alignItems: 'center' }}>
-            <Typography
-              variant="body1"
-              sx={{ fontSize: '22px', fontWeight: 500 }}
-            >
-              ${data.salary}k
-            </Typography>
-            <Typography variant="body2" color={"#999"} children="/m" />
+        <Divider sx={{ mt: 1, mx: 2 }} />
+        <Stack direction={"row"} sx={{ p: 2, justifyContent: 'space-between' }}>
+          <Stack>
+            <Stack direction={"row"} sx={{ alignItems: 'center' }}>
+              <Typography
+                variant="body1"
+                sx={{ fontSize: '22px', fontWeight: 500 }}
+              >
+                ${data.salary}k
+              </Typography>
+              <Typography variant="body2" color={"#999"} children="/m" />
+            </Stack>
+
           </Stack>
           <Stack direction="row" alignItems="center" >
-            <History fontSize="small" sx={{color:'#999'}} />
+            <History fontSize="small" sx={{ color: '#999' }} />
             <Typography variant="body2" color="text.secondary">
               Posted {justNow(data.dateTime)}
             </Typography>
           </Stack>
+        </Stack>
+        <Stack spacing={0.5} direction={"row"} >
+          <Typography variant="subtitle2" sx={{ color: 'grey' }}>Apply on :</Typography>
+          <Typography variant="subtitle2">{data.applyon}</Typography>
         </Stack>
       </Card>
     </div >

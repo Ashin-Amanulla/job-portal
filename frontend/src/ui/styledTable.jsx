@@ -1,7 +1,8 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow } from '@mui/material'
+import { Avatar, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
 import React from 'react'
 import StyledTableActionCell from './tableAction'
 import { useState } from 'react';
+import TableDescription from './tableDescription';
 
 
 export default function StyledTable({ header = [], data = [], isAction = true, actions = ["Edit", "Delete"], onActionClick }) {
@@ -23,13 +24,16 @@ export default function StyledTable({ header = [], data = [], isAction = true, a
 
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} >
+            <Table sx={{ minWidth: 900 }} size='small' hover>
                 <TableHead>
                     <TableRow>
                         {
-                            header.map((head, ind) => (
-                                <TableCell key={ind}>{head}</TableCell>
-                            ))
+                            header.map((head, ind) => {
+                                if (head == "icon") {
+                                    return(<TableCell key={ind}/>)
+                                }
+                                return(<TableCell key={ind} ><Typography variant='subtitle2' noWrap>{head}</Typography></TableCell>)
+                            })
                         }
                         {isAction && <TableCell />}
                     </TableRow>
@@ -44,9 +48,14 @@ export default function StyledTable({ header = [], data = [], isAction = true, a
                             sx={{ height: 5 }}
                         >
                             {
-                                header.map((head, ind) => (
-                                    <TableCell sx={{ height: 5 }} key={ind}>{row[`${head}`]}</TableCell>
-                                ))
+                                header.map((head, ind) => {
+                                    if (head == "icon") {
+                                        return(<TableCell key={ind}><img src={`${row[`${head}`]}`} style={{objectFit:'contain',height:'40px',width:'40px'}}/></TableCell>)
+                                    }else if(head.toLowerCase() == "description"){
+                                        return(<TableCell key={ind}><TableDescription text={row[`${head}`]}/></TableCell>)
+                                    }
+                                    return(<TableCell key={ind}>{row[`${head}`]}</TableCell>)
+                                })
                             }
                             <TableCell sx={{ height: 5 }}>
                                 <StyledTableActionCell actions={actions} onCliked={(e) => { onActionClick && onActionClick({ index: e.index, action: e.action, data: row }) }} />
@@ -59,7 +68,7 @@ export default function StyledTable({ header = [], data = [], isAction = true, a
                         </tr>
                     )}
                 </TableBody>
-                <TableFooter sx={{ height: 80 }}>
+                <TableFooter sx={{ height: 50 }}>
                     <TablePagination
                         rowsPerPageOptions={[10, 25, { label: 'All', value: -1 }]}
                         colSpan={header.length}
