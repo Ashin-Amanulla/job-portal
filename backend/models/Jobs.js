@@ -10,7 +10,17 @@ const JobSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  location: {
+  city: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  state: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  country:{
     type: String,
     required: true,
     trim: true
@@ -25,21 +35,32 @@ const JobSchema = new mongoose.Schema({
     required:true,
     trim: true
   },
-  salary: {
-    type: String,
-    required: true
-  },
+
   industry: {
     type: String,
     required: true,
     trim: true
   },
-  industry_logo:{
+  company_name:{
     type: String,
     required: true,
     trim: true
   },
+  company_logo:{
+    type: String,
+    
+  },
   job_type: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  work_nature: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  closing_date: {
     type: String,
     required: true,
     trim: true

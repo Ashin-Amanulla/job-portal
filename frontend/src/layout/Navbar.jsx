@@ -24,7 +24,7 @@ export default function Navbar() {
           {/* This icon can be replaced with your logo */}
           <img height={'50px'} src='https://img.freepik.com/free-vector/green-leaves-round-logo_78370-2097.jpg?w=1480&t=st=1711449455~exp=1711450055~hmac=29b73d809df5b2f287a263e3891d9c727872b3e73411bcb478ee986b70e61bd6' />
           <Typography variant="h5" color={'primary.dark'} sx={{ fontWeight: 600 }}>
-            Navo Jobs
+            Navoday Jobs
           </Typography>
         </Stack>
         <Stack direction="column" justifyContent={"start"} sx={{pl:3}}>
@@ -50,7 +50,7 @@ export default function Navbar() {
           {/* This icon can be replaced with your logo */}
           <img height={'50px'} src='https://img.freepik.com/free-vector/green-leaves-round-logo_78370-2097.jpg?w=1480&t=st=1711449455~exp=1711450055~hmac=29b73d809df5b2f287a263e3891d9c727872b3e73411bcb478ee986b70e61bd6' />
           <Typography variant="h5" color={'primary.dark'} sx={{ fontWeight: 600 }}>
-            Navo Jobs
+            Navoday Jobs
           </Typography>
         </Stack>
         <Stack direction="row" sx={{ display: { xs: 'none', md: 'flex' } }} spacing={4}>
@@ -67,13 +67,13 @@ export default function Navbar() {
             ))
           }
         </Stack>
-        <Stack direction="row" spacing={2} alignItems="center">
+        {/* <Stack direction="row" spacing={2} alignItems="center">
           <Stack sx={{ alignItems: 'end' }}>
             <Typography variant='subtitle1' sx={{ color: '#2a5f44', fontWeight: 500, lineHeight: '10px' }}>Gausul Haque</Typography>
             <Typography variant="caption">Job Seeker</Typography>
           </Stack>
-          <Avatar alt="Gausul Haque" src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" /> {/* Replace '/path-to-your-image.jpg' with the path to your user's avatar image */}
-        </Stack>
+          <Avatar alt="Gausul Haque" src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" /> Replace '/path-to-your-image.jpg' with the path to your user's avatar image
+        </Stack> */}
       </Toolbar>
     </AppBar>
   );

@@ -3,6 +3,7 @@ import { Box, Typography, Checkbox, Button, FormGroup, FormControlLabel, Slider,
 import StyledSlider from './StyledSlider';
 import StyledCheckBox from './styledCheckBox';
 import { Close } from '@mui/icons-material';
+import { IndustryTypes } from '../assets/json/industryTypes';
 
 export default function Filter({ onClose }) {
 
@@ -28,23 +29,32 @@ export default function Filter({ onClose }) {
       <Divider />
       <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Sort By</Typography>
       <FormGroup>
+      <Box sx={{
+                height: '300px',
+                overflowY: 'auto',
+                '&::-webkit-scrollbar': {
+                    width: '6px',
+                    backgroundColor: 'rgba(0,0,0,0.1)',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: 'rgba(0,0,0,0.6)',
+                }
+            }}>
         <Grid container>
-          <Grid item xs={6}>
-            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Recently" />} />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="A-Z" />} />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Top Salary" />} />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControlLabel control={<StyledCheckBox />} label={<Typography variant='subtitle2' fontWeight={200} children="Rating" />} />
-          </Grid>
+        {IndustryTypes.map((type, index) => (
+                    <Grid item xs={6} key={index}>
+                        <FormControlLabel
+                            control={<StyledCheckBox />}
+                            label={<Typography variant='subtitle2' fontWeight={200} children={type} />}
+                        />
+                    </Grid>
+                ))}
+          
         </Grid>
+        </Box>
       </FormGroup>
 
-      <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Salary Range</Typography>
+      {/* <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Salary Range</Typography>
       <Box px={3}>
         <StyledSlider
           value={salaryRange}
@@ -54,7 +64,7 @@ export default function Filter({ onClose }) {
           max={200}
           valueLabelFormat={(value) => `$${value}k/m`}
         />
-      </Box>
+      </Box> */}
 
 
       <Typography gutterBottom variant='body1' sx={{ fontWeight: 600, mt: 2 }} color={'primary.darkest'}>Job Type</Typography>

@@ -10,14 +10,9 @@ exports.createAdmin = async (req, res) => {
     try {
         const password = randomPassword();
         const hashedPassword = await hashPassword(password);
-        const adminsame = await Admin.findOne({ email: req.body.email });
-        console.log(validateEmail(req.body.email));
-        if (!validateEmail(req.body.email)) {
-            return res.status(400).send({status:false,error:'Check Email Format'});
-        }
-        if (adminsame) {
-            return res.status(400).send({status:false,error:'Email already Registered'});
-        }
+        const isExist = await Admin.findOne({ email: req.body.email });
+        if(isExist) throw new Error ('Admin already exists')
+
         const admin = new Admin({
             ...req.body,
             password_hash: hashedPassword,
@@ -38,19 +33,15 @@ exports.createAdmin = async (req, res) => {
 exports.adminSignIn = async (req, res) => {
     try {
         const admin = await Admin.findOne({ email: req.body.email });
-        if (!admin) {
-            return res.status(404).send({ error: 'Login failed!' });
-        }
+        if (!admin) throw new Error ("Admin Email not found")
 
         const isPasswordMatch = await comparePassword(req.body.password, admin.password_hash);
-        if (!isPasswordMatch) {
-            return res.status(400).send({ error: 'Login failed!' });
-        }
+        if (!isPasswordMatch) throw new Error ("Admin Password error")
 
         const token = await signAccessToken(admin._id, admin.role, admin.email);
-        res.send({ admin, token });
+        res.status(200).send({ admin, token });
     } catch (error) {
-        res.status(500).send(error);
+        res.status(400).send(error.message);
     }
 };
 

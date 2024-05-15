@@ -20,7 +20,7 @@ export default function Jobs({ data, filterChange }) {
                     </IconButton>
                 </Stack>
                 <Stack direction={'row'} spacing={2} alignItems={"center"}>
-                    <Typography color={'#666'}>Short By:</Typography>
+                    <Typography color={'#666'}>Sort By:</Typography>
                     <Box sx={{ backgroundColor: '#fff', borderRadius: '4px', p: 1 }}>
                         <Typography variant='subtitle2' color={'primary.darkest'}>Newest</Typography>
                     </Box>

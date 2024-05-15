@@ -46,7 +46,7 @@ const Sidebar = ({ open, onClose, ...props }) => {
             {/* This icon can be replaced with your logo */}
             <img height={'50px'} src='https://img.freepik.com/free-vector/green-leaves-round-logo_78370-2097.jpg?w=1480&t=st=1711449455~exp=1711450055~hmac=29b73d809df5b2f287a263e3891d9c727872b3e73411bcb478ee986b70e61bd6' />
             <Typography variant="h5" color={'primary.dark'} sx={{ fontWeight: 600 }}>
-              Jobify
+              Novoday Jobs
             </Typography>
           </Stack>
         </Box>
